@@ -1,9 +1,11 @@
+import React from 'react'
+import Main from "./chat/Main";
 
 
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+      <Main />
     </div>
   );
 }
