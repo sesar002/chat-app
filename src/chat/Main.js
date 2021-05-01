@@ -55,8 +55,6 @@ export default function Main() {
     });
   }, []);
 
-  console.log(room);
-
   const sendMessage = useCallback(
     (message) => {
       drone.publish({
