@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Input from "./Input";
 import Messages from "./Messages";
+import "./css/style.css";
 
 const random_name = require("node-random-name");
 
@@ -67,7 +68,7 @@ export default function Main() {
 
   return (
     <div className="main">
-      <div>
+      <div className="container">
         <Messages currentMember={member} messages={messages} />
         <Input isLoading={isLoading} sendMessage={sendMessage} />
       </div>

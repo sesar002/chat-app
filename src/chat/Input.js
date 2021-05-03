@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/style.css";
 
 export default class Input extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class Input extends React.Component {
 
   render() {
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
+      <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
         <input
           type="text"
           placeholder="Enter message and press enter or Send Button"

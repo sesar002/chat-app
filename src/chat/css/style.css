@@ -1,9 +1,92 @@
 * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   list-style-type: none;
+  width: 100%;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 10px;
+  padding: 10px;
+  width: 700px;
+  height: 500px;
+  background: white;
+}
+
+.form {
+  border-top: 1px black solid;
+  padding: 5px;
+  padding-bottom: 0;
+  width: 100%;
+  height: 10%;
+}
+
+.form input:nth-child(1) {
+  border: 1px solid black;
+  padding-left: 5px;
+  border-radius: 10px;
+  height: 100%;
+  width: 90%;
+}
+
+.form input:nth-child(2) {
+  height: 100%;
+  width: 10%;
+}
+
+.message {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  word-break: break-word;
+  margin-top: 5px;
+  max-width: 500px;
+}
+
+.message span {
+  display: block;
+  background: blue;
+  color: white;
+  padding: 10px;
+}
+
+.fromMe {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 /*# sourceMappingURL=style.css.map */
