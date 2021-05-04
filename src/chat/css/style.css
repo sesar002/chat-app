@@ -31,7 +31,7 @@
           align-items: center;
   width: 100vw;
   height: 100vh;
-  background: black;
+  background: #292929;
 }
 
 .container {
@@ -44,7 +44,9 @@
   padding: 10px;
   width: 700px;
   height: 500px;
-  background: white;
+  background: #121212;
+  -webkit-box-shadow: 5px 5px 26px 3px black;
+          box-shadow: 5px 5px 26px 3px black;
 }
 
 .form {
@@ -74,19 +76,30 @@
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   word-break: break-word;
-  margin-top: 5px;
+  margin: 5px 0;
   max-width: 500px;
 }
 
-.message span {
+.message .text {
   display: block;
-  background: blue;
-  color: white;
+  border-radius: 0 20px 20px 20px;
+  background: #7a7aff;
+  color: black;
   padding: 10px;
 }
 
 .fromMe {
   -ms-flex-item-align: end;
       align-self: flex-end;
+  margin-right: 5px;
+}
+
+.fromMe .text {
+  background: #00bcab;
+  border-radius: 20px 0 20px 20px;
+}
+
+.fromMe .member {
+  text-align: right;
 }
 /*# sourceMappingURL=style.css.map */

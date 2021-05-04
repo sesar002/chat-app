@@ -5,22 +5,26 @@ import "./css/style.css";
 
 const random_name = require("node-random-name");
 
-const ROOM_NAME = "room_name";
+var randomColor = require("randomcolor");
+
+const ROOM_NAME = "observable-room";
 
 function getRandomColor() {
-  const letters = ["B", "C", "D", "E", "F"];
-  let color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * letters.length)];
-  }
+  const color = randomColor({
+    luminosity: "light",
+    format: "rgb",
+  });
   return color;
 }
 
 export default function Main() {
-  const [member, setMember] = useState({});
+  const [member, setMember] = useState({
+    name: random_name(),
+    color: getRandomColor(),
+  });
+  const [members, setMembers] = useState([]);
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [room, setRoom] = useState(null);
 
   const drone = useMemo(
     () => new window.Scaledrone("meflNXPM4zkSd7rh", { data: member }),
@@ -32,6 +36,7 @@ export default function Main() {
       if (error) {
         return console.error(error);
       }
+
       setMember({
         name: random_name(),
         color: getRandomColor(),
@@ -39,8 +44,6 @@ export default function Main() {
       });
 
       const room = drone.subscribe(ROOM_NAME);
-
-      setRoom(room);
 
       room.on("open", (error) => {
         if (error) {

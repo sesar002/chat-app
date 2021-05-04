@@ -18,7 +18,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: black;
+  background: #292929;
 }
 .container {
   display: flex;
@@ -27,7 +27,8 @@
   padding: 10px;
   width: 700px;
   height: 500px;
-  background: white;
+  background: #121212;
+  box-shadow: 5px 5px 26px 3px black;
 }
 .form {
   border-top: 1px black solid;
@@ -51,15 +52,24 @@
   align-self: flex-start;
   box-sizing: content-box;
   word-break: break-word;
-  margin-top: 5px;
+  margin: 5px 0;
   max-width: 500px;
-  span {
+  .text {
     display: block;
-    background: blue;
-    color: white;
+    border-radius: 0 20px 20px 20px;
+    background: #7a7aff;
+    color: black;
     padding: 10px;
   }
 }
 .fromMe {
   align-self: flex-end;
+  margin-right: 5px;
+  .text {
+    background: #00bcab;
+    border-radius: 20px 0 20px 20px;
+  }
+  .member {
+    text-align: right;
+  }
 }

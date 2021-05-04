@@ -29,6 +29,7 @@ export default class Input extends React.Component {
     return (
       <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
         <input
+          disabled={this.props.isLoading}
           type="text"
           placeholder="Enter message and press enter or Send Button"
           value={this.state.inputText}

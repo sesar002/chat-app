@@ -6,13 +6,18 @@ export default function Messages({ currentMember, messages }) {
     <ul className="list">
       {messages.map((message) => {
         const myMessage = message.clientId === currentMember.id;
-        console.log(message);
+
+        const { name, color } = message.member.clientData;
+
         return (
           <li
             className={myMessage ? "message fromMe" : "message"}
             key={message.id}
           >
-            <span>{message.data}</span>
+            <span style={{ color: color }} className="member">
+              {name}
+            </span>
+            <span className="text">{message.data}</span>
           </li>
         );
       })}
