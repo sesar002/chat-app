@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Input from "./Input";
 import Messages from "./Messages";
 import "./css/style.css";
+import Members from "./Members";
 
 const random_name = require("node-random-name");
 
@@ -52,6 +53,18 @@ export default function Main() {
         setIsLoading(false);
       });
 
+      room.on("members", (members) => {
+        setMembers(() => [...members]);
+      });
+
+      room.on("member_join", (member) => {
+        setMembers((members) => [...members, member]);
+      });
+
+      room.on("member_leave", ({ id }) => {
+        setMembers((members) => members.filter((member) => member.id !== id));
+      });
+
       room.on("message", (message) => {
         // svaki puta kada se event message pojavi u roomu, izvršiti će se funkcija u setMessages, callback ce dohvatiti zadnje stanje messages-a
         setMessages((messages) => [...messages, message]);
@@ -72,7 +85,12 @@ export default function Main() {
   return (
     <div className="main">
       <div className="container">
-        <Messages currentMember={member} messages={messages} />
+        <Members members={members} />
+        <Messages
+          currentMember={member}
+          messages={messages}
+          members={members}
+        />
         <Input isLoading={isLoading} sendMessage={sendMessage} />
       </div>
     </div>

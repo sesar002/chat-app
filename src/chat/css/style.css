@@ -15,7 +15,7 @@
           flex-direction: column;
   list-style-type: none;
   width: 100%;
-  height: 90%;
+  height: 84%;
   overflow-y: scroll;
 }
 
@@ -45,8 +45,8 @@
   width: 700px;
   height: 500px;
   background: #121212;
-  -webkit-box-shadow: 5px 5px 26px 3px black;
-          box-shadow: 5px 5px 26px 3px black;
+  -webkit-box-shadow: 5px 5px 15px 1px black;
+          box-shadow: 5px 5px 15px 1px black;
 }
 
 .form {
@@ -54,13 +54,13 @@
   padding: 5px;
   padding-bottom: 0;
   width: 100%;
-  height: 10%;
+  height: 8%;
 }
 
 .form input:nth-child(1) {
   border: 1px solid black;
   padding-left: 5px;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   height: 100%;
   width: 90%;
 }
@@ -68,6 +68,7 @@
 .form input:nth-child(2) {
   height: 100%;
   width: 10%;
+  border-radius: 0 10px 10px 0;
 }
 
 .message {
@@ -101,5 +102,12 @@
 
 .fromMe .member {
   text-align: right;
+}
+
+.members {
+  width: 100%;
+  height: 8%;
+  color: white;
+  overflow-y: scroll;
 }
 /*# sourceMappingURL=style.css.map */
