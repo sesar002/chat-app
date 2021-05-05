@@ -4,19 +4,21 @@ import Messages from "./Messages";
 import "./css/style.css";
 import Members from "./Members";
 
+const CHANNEL_ID = "meflNXPM4zkSd7rh";
+
 const random_name = require("node-random-name");
 
 var randomColor = require("randomcolor");
 
 const ROOM_NAME = "observable-room";
 
-function getRandomColor() {
+const getRandomColor = () => {
   const color = randomColor({
     luminosity: "light",
     format: "rgb",
   });
   return color;
-}
+};
 
 export default function Main() {
   const [member, setMember] = useState({
@@ -28,7 +30,7 @@ export default function Main() {
   const [isLoading, setIsLoading] = useState(true);
 
   const drone = useMemo(
-    () => new window.Scaledrone("meflNXPM4zkSd7rh", { data: member }),
+    () => new window.Scaledrone(CHANNEL_ID, { data: member }),
     []
   );
 

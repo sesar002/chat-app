@@ -4,14 +4,6 @@
   padding: 0;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  width: 100%;
-  height: 84%;
-  overflow-y: scroll;
-}
 .main {
   display: flex;
   justify-content: center;
@@ -20,35 +12,52 @@
   height: 100vh;
   background: #292929;
 }
+
 .container {
   display: flex;
   flex-wrap: wrap;
   border-radius: 10px;
-  padding: 10px;
   width: 700px;
   height: 500px;
-  background: #121212;
   box-shadow: 5px 5px 15px 1px black;
 }
-.form {
-  border-top: 1px black solid;
-  padding: 5px;
-  padding-bottom: 0;
+
+.members {
+  border-radius: 10px 10px 0 0;
+  background: #2f2e2e;
+  padding: 10px;
   width: 100%;
   height: 8%;
-  input:nth-child(1) {
-    border: 1px solid black;
-    padding-left: 5px;
-    border-radius: 10px 0 0 10px;
-    height: 100%;
-    width: 90%;
-  }
-  input:nth-child(2) {
-    height: 100%;
-    width: 10%;
-    border-radius: 0 10px 10px 0;
+  color: white;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  background: #121212;
+  padding: 10px;
+  width: 100%;
+  height: 84%;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    &:hover {
+      background: #555;
+    }
+  }
+}
+
 .message {
   align-self: flex-start;
   box-sizing: content-box;
@@ -61,22 +70,59 @@
     background: #7a7aff;
     color: black;
     padding: 10px;
+    width: fit-content;
   }
 }
 .fromMe {
   align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   margin-right: 5px;
   .text {
     background: #00bcab;
     border-radius: 20px 0 20px 20px;
+    align-self: flex-end;
   }
   .member {
     text-align: right;
   }
 }
-.members {
+
+.form {
+  padding: 5px;
   width: 100%;
   height: 8%;
-  color: white;
-  overflow-y: scroll;
+  background: #2f2e2e;
+  border-radius: 0 0 10px 10px;
+  input:nth-child(1) {
+    border: 0;
+    background: #2f2e2e;
+    color: white;
+    padding-left: 5px;
+    border-radius: 10px 0 0 10px;
+    height: 100%;
+    width: 90%;
+  }
+  input:nth-child(2) {
+    height: 100%;
+    width: 10%;
+    border-radius: 0 10px 10px 0;
+    color: white;
+    border: 0;
+    background: #2f2e2e;
+    border-left: 1px solid white;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 479px) {
+  .form {
+    input:nth-child(1) {
+      width: 80%;
+    }
+    input:nth-child(2) {
+      width: 20%;
+    }
+  }
 }

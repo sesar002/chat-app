@@ -17,7 +17,9 @@ export default function Messages({ currentMember, messages, members }) {
             <span style={{ color: color }} className="member">
               {name}
             </span>
-            <span className="text">{message.data}</span>
+            <span style={{ background: color }} className="text">
+              {message.data}
+            </span>
           </li>
         );
       })}
