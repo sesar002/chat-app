@@ -1,3 +1,7 @@
+---
+permalink: /index.html
+---
+
 # Chat App
 
 When you run the program, it generats random name and random color.
