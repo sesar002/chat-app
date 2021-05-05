@@ -1,6 +1,3 @@
----
-permalink: /index.html
----
 
 # Chat App
 
