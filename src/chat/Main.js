@@ -88,11 +88,7 @@ export default function Main() {
     <div className="main">
       <div className="container">
         <Members members={members} />
-        <Messages
-          currentMember={member}
-          messages={messages}
-          members={members}
-        />
+        <Messages currentMember={member} messages={messages} />
         <Input isLoading={isLoading} sendMessage={sendMessage} />
       </div>
     </div>
