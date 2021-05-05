@@ -12,9 +12,24 @@ export default function Messages({ currentMember, messages }) {
     scrollToBottom();
   }, [messages]);
 
+  let newMessages = messages.reduce((array, message) => {
+    const { name } = message.member.clientData;
+    const { data } = message;
+    if (array.length !== 0) {
+      if (array.name === name) {
+        const messagesArray = [...array.messages, data];
+        return (array = [{ name: name, messages: [...messagesArray] }]);
+      }
+    } else {
+      return (array = [{ name: name, messages: [data] }]);
+    }
+  }, []);
+
+  console.log(newMessages);
+
   return (
     <ul className="list">
-      {messages.map((message) => {
+      {messages.map((message, i, a) => {
         const myMessage = message.clientId === currentMember.id;
 
         const { name, color } = message.member.clientData;
