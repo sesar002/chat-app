@@ -12,39 +12,64 @@ export default function Messages({ currentMember, messages }) {
     scrollToBottom();
   }, [messages]);
 
-  let newMessages = messages.reduce((array, message) => {
-    const { name } = message.member.clientData;
-    const { data } = message;
-    if (array.length !== 0) {
-      if (array.name === name) {
-        const messagesArray = [...array.messages, data];
-        return (array = [{ name: name, messages: [...messagesArray] }]);
-      }
-    } else {
-      return (array = [{ name: name, messages: [data] }]);
-    }
-  }, []);
+  const mappedMessages = messages
+    .map((message) => {
+      const { name, color } = message.member.clientData;
+      const { id } = message.member;
+      const { data } = message;
+      return { id: id, name: name, color: color, messages: [data] };
+    })
+    .reduce((array, message) => {
+      const { id, name, color } = message;
+      const data = message.messages;
+      if (array.length !== 0) {
+        if (array[array.length - 1].name === name) {
+          const newMessage = {
+            id: id,
+            name: name,
+            color: color,
+            messages: [...array[array.length - 1].messages, data],
+          };
 
-  console.log(newMessages);
+          array[array.length - 1] = newMessage;
+
+          return array;
+        } else {
+          const newArray = [
+            ...array,
+            { id: id, name: name, color: color, messages: [data] },
+          ];
+          return (array = newArray);
+        }
+      } else {
+        return (array = [
+          { id: id, name: name, color: color, messages: [data] },
+        ]);
+      }
+    }, []);
 
   return (
     <ul className="list">
-      {messages.map((message, i, a) => {
-        const myMessage = message.clientId === currentMember.id;
+      {mappedMessages.map((message) => {
+        const { id, name, color } = message;
 
-        const { name, color } = message.member.clientData;
+        const myMessage = id === currentMember.id;
+
+        console.log(id);
+        console.log(currentMember.id);
 
         return (
-          <li
-            className={myMessage ? "message fromMe" : "message"}
-            key={message.id}
-          >
+          <li className={myMessage ? "message fromMe" : "message"} key={id}>
             <span style={{ color: color }} className="member">
               {name}
             </span>
-            <span style={{ background: color }} className="text">
-              {message.data}
-            </span>
+            {message.messages.map((mess, i) => {
+              return (
+                <span key={i} style={{ background: color }} className="text">
+                  {mess}
+                </span>
+              );
+            })}
           </li>
         );
       })}

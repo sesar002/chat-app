@@ -92,12 +92,12 @@
 .message .text {
   display: block;
   border-radius: 0 20px 20px 20px;
-  background: #7a7aff;
   color: black;
   padding: 10px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  margin-bottom: 5px;
 }
 
 .fromMe {
@@ -117,7 +117,6 @@
 }
 
 .fromMe .text {
-  background: #00bcab;
   border-radius: 20px 0 20px 20px;
   -ms-flex-item-align: end;
       align-self: flex-end;

@@ -31,7 +31,7 @@ export default class Input extends React.Component {
         <input
           disabled={this.props.isLoading}
           type="text"
-          placeholder="Enter message and press enter or Send Button"
+          placeholder="Enter message"
           value={this.state.inputText}
           onChange={(e) => this.handleChange(e)}
         />
