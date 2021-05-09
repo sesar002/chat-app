@@ -12,31 +12,29 @@ export default function Messages({ currentMember, messages }) {
     scrollToBottom();
   }, [messages]);
 
-  const mappedMessages = messages
+  const newMessages = messages
     .map((message) => {
+      const { data, timestamp, clientId, id } = message;
       const { name, color } = message.member.clientData;
-      const { id } = message.member;
-      const { data, timestamp } = message;
       return {
-        id: id,
+        clientId: clientId,
         name: name,
         color: color,
-        messages: [{ data: data, timestamp: timestamp }],
+        messages: [{ data: data, timestamp: timestamp, id: id }],
       };
     })
     .reduce((array, message) => {
-      console.log(message);
-      const { id, name, color } = message;
-      const { data, timestamp } = message.messages[0];
+      const { clientId, name, color } = message;
+      const { data, timestamp, id } = message.messages[0];
       if (array.length !== 0) {
         if (array[array.length - 1].name === name) {
           const newMessage = {
-            id: id,
+            id: clientId,
             name: name,
             color: color,
             messages: [
               ...array[array.length - 1].messages,
-              { data: data, timestamp: timestamp },
+              { id: id, data: data, timestamp: timestamp },
             ],
           };
 
@@ -47,10 +45,10 @@ export default function Messages({ currentMember, messages }) {
           const newArray = [
             ...array,
             {
-              id: id,
+              id: clientId,
               name: name,
               color: color,
-              messages: [{ data: data, timestamp: timestamp }],
+              messages: [{ id: id, data: data, timestamp: timestamp }],
             },
           ];
           return (array = newArray);
@@ -58,20 +56,20 @@ export default function Messages({ currentMember, messages }) {
       } else {
         return (array = [
           {
-            id: id,
+            id: clientId,
             name: name,
             color: color,
-            messages: [{ data: data, timestamp: timestamp }],
+            messages: [{ id: id, data: data, timestamp: timestamp }],
           },
         ]);
       }
     }, []);
 
-  console.log(messages);
+  console.log(newMessages);
 
   return (
     <ul className="list">
-      {mappedMessages.map((message) => {
+      {newMessages.map((message) => {
         const { id, name, color } = message;
 
         const myMessage = id === currentMember.id;
@@ -81,13 +79,17 @@ export default function Messages({ currentMember, messages }) {
             <span style={{ color: color }} className="member">
               {name}
             </span>
-            {message.messages.map((mess, i) => {
+            {message.messages.map((mess) => {
               const time = new Date(mess.timestamp * 1000);
 
               const hours = time.getHours();
               const minutes = time.getMinutes();
               return (
-                <div key={i} style={{ background: color }} className="text">
+                <div
+                  key={mess.id}
+                  style={{ background: color }}
+                  className="text"
+                >
                   <span>{mess.data}</span>
                   <span className="time">
                     {(hours > 9 ? hours : "0" + hours) +
