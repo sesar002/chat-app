@@ -100,6 +100,11 @@
   margin-bottom: 5px;
 }
 
+.message .text .time {
+  display: block;
+  font-size: 10px;
+}
+
 .fromMe {
   -ms-flex-item-align: end;
       align-self: flex-end;
@@ -122,6 +127,10 @@
       align-self: flex-end;
 }
 
+.fromMe .text .time {
+  text-align: end;
+}
+
 .fromMe .member {
   text-align: right;
 }
@@ -142,6 +151,10 @@
   border-radius: 10px 0 0 10px;
   height: 100%;
   width: 90%;
+}
+
+.form input:nth-child(1):focus {
+  outline-width: 0;
 }
 
 .form input:nth-child(2) {
