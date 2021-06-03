@@ -1,6 +1,5 @@
-import React from 'react'
+import React from "react";
 import Main from "./chat/Main";
-
 
 function App() {
   return (

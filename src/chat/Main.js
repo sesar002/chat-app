@@ -86,6 +86,13 @@ export default function Main() {
 
   return (
     <div className="main">
+      <a
+        href="https://github.com/sesar002/chat-app"
+        className="github"
+        target="a_blank"
+      >
+        View Code on Github!
+      </a>
       <div className="container">
         <Members members={members} />
         <Messages currentMember={member} messages={messages} />
