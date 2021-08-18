@@ -44,8 +44,8 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   border-radius: 10px;
-  width: 700px;
-  height: 500px;
+  max-width: 700px;
+  height: 80%;
   -webkit-box-shadow: 5px 5px 15px 1px black;
           box-shadow: 5px 5px 15px 1px black;
 }
